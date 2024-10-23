@@ -1,5 +1,4 @@
 const console = @import("./console.zig");
-const ps2 = @import("ps2.zig");
 
 const ALIGN = 1 << 0;
 const MEMINFO = 1 << 1;
@@ -32,13 +31,8 @@ export fn _start() callconv(.Naked) noreturn {
     while (true) {}
 }
 
-pub fn keyboard_callback(char: u8) void {
-    console.putChar(char);
-}
-
 export fn kmain() void {
     console.initialize();
     console.puts("Hello Zig Kernel!\n");
     console.puts("yall good");
-    ps2.keyboard_callback = keyboard_callback;
 }
